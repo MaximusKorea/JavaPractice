@@ -1,6 +1,7 @@
 package jdbc;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,7 +30,9 @@ public class Member {
 		String name = sc.next();
 		System.out.print("주소 : ");
 		String address = sc.next();
-		int result = db.DbInsert(id, name, address);
+		Student student = new Student(id,name,address);
+		
+		int result = db.DbInsert(student);
 		if(result == 1) {
 			System.out.println("학생 등록 완료!");
 		}else {
@@ -55,7 +58,8 @@ public class Member {
 		String name = sc.next();
 		System.out.print("주소 : ");
 		String address = sc.next();
-		int result = db.DbModify(id, name, address);
+		Student student = new Student(id,name,address);
+		int result = db.DbModify(student);
 		if(result == 1) {
 			System.out.println("회원정보 수정이 완료되었습니다.");
 		}else if(result == -1) {

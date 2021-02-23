@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
+	
 public class DbClass {
 
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -49,14 +49,14 @@ public class DbClass {
 		
 	}
 	
-	public int DbInsert(String id,String name,String address) {
+	public int DbInsert(Student student) {
 		
 		String sql = "INSERT INTO usertest VALUES(?,?,?)";
 		int result = 0;
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)){
-			pstmt.setString(1, id);
-			pstmt.setString(2, name);
-			pstmt.setString(3, address);
+			pstmt.setString(1, student.getUserId());
+			pstmt.setString(2, student.getName());
+			pstmt.setString(3, student.getAddress());
 			result = pstmt.executeUpdate();
 			
 		}catch(Exception e) {
@@ -103,14 +103,14 @@ public class DbClass {
 		return flag;
 	}
 	
-	public int DbModify(String id, String name, String address) {
+	public int DbModify(Student student) {
 		String sql = "UPDATE usertest SET username = ?,age=? WHERE userid = ?";
 		int result = 0;
-		if(DbConfirm(id)) {
+		if(DbConfirm(student.getUserId())) {
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)){
-			pstmt.setString(1, name);
-			pstmt.setString(2, address);
-			pstmt.setString(3, id);
+			pstmt.setString(1, student.getName());
+			pstmt.setString(2, student.getAddress());
+			pstmt.setString(3, student.getUserId());
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
