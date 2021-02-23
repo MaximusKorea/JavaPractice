@@ -1,16 +1,13 @@
 package jdbc;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class Member {
 
 	DbClass db = new DbClass();
-	
+	Scanner sc = new Scanner(System.in);
 	public void showlist() {
 		List<Student> list = db.getMember();
 		
@@ -26,7 +23,6 @@ public class Member {
 	}
 	
 	public void insert() {
-		Scanner sc = new Scanner(System.in);
 		System.out.print("아이디 : ");
 		String id = sc.next();
 		System.out.print("이름 : ");
@@ -42,7 +38,6 @@ public class Member {
 		
 	}
 	public void delete() {
-		Scanner sc = new Scanner(System.in);
 		System.out.print("삭제하실 아이디 : ");
 		String id = sc.next();
 		if(db.Dbdelete(id)) {
@@ -54,7 +49,6 @@ public class Member {
 		
 	}
 	public void modify() {
-		Scanner sc = new Scanner(System.in);
 		System.out.print("아이디 : ");
 		String id = sc.next();
 		System.out.print("이름: ");
