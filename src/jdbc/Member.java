@@ -33,7 +33,7 @@ public class Member {
 		if(result == 1) {
 			System.out.println("학생 등록 완료!");
 		}else {
-			System.out.println("등록 실패");
+			System.out.println("등록 실패!");
 		}
 		
 	}
