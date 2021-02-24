@@ -21,7 +21,6 @@ public class Server {
 		// 클라이언트로부터 output
 		OutputStream out = clt_s.getOutputStream();
 		DataOutputStream dos = new DataOutputStream(out);
-		
 		int randNum = (int)(Math.random()*100+1);
 		System.out.println("random 값은 " + randNum);
 		while(true) {
