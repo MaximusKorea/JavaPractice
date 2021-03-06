@@ -66,7 +66,7 @@ public class MemberController implements Initializable {
 		if(id.isEmpty() || pw1.isEmpty() || pw2.isEmpty() || gender.isEmpty() || interest.isEmpty()) {
 			CommonServiceImpl.showMessage("모든 값을 입력해주세요");
 			memberName.requestFocus();
-			
+			  
 		}else {
 		if(!idConfirm(id)) {
 			if(pwConfirm(pw1,pw2)) {
