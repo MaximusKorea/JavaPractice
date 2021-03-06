@@ -43,13 +43,14 @@ public class MemberController implements Initializable {
 		RadioButton genderM = (RadioButton)root.lookup("#genderM");
 		RadioButton genderF = (RadioButton)root.lookup("#genderF");
 		CheckBox reading = (CheckBox)root.lookup("#chkReading");
+		CheckBox exercise = (CheckBox)root.lookup("#chkExercise");
 		CheckBox love = (CheckBox)root.lookup("#chkLove");
 		CheckBox car = (CheckBox)root.lookup("#chkCar");
 		CheckBox realestate = (CheckBox)root.lookup("#chkRealestate");
 		CheckBox stock = (CheckBox)root.lookup("#chkStock");
 		List<CheckBox> checkbox = new ArrayList<>();
 		checkbox.add(reading);
-		checkbox.add(reading);
+		checkbox.add(exercise);
 		checkbox.add(love);
 		checkbox.add(car);
 		checkbox.add(realestate);
@@ -62,11 +63,17 @@ public class MemberController implements Initializable {
 		String gender = genderValue(genderM,genderF);
 		String interest = interestValue(checkbox);
 		MemberVO vo = null;
+		if(id.isEmpty() || pw1.isEmpty() || pw2.isEmpty() || gender.isEmpty() || interest.isEmpty()) {
+			CommonServiceImpl.showMessage("모든 값을 입력해주세요");
+			memberName.requestFocus();
+			
+		}else {
 		if(!idConfirm(id)) {
 			if(pwConfirm(pw1,pw2)) {
-				vo = new MemberVO(name,id,pw1,gender,interest);
+				vo = new MemberVO(name,id,pw1,interest,gender);
 				list.add(vo);
 				CommonServiceImpl.showMessage("회원가입이 완료 되었습니다.");
+				
 				CommonService.exit(root);
 				
 			}else {
@@ -79,8 +86,8 @@ public class MemberController implements Initializable {
 			
 			
 		}
+		}
 		
-		System.out.println("회원가입 확인버튼 눌림");
 	}
 	public boolean pwConfirm(String pw1, String pw2) {
 		boolean flag = false;
@@ -127,18 +134,31 @@ public class MemberController implements Initializable {
 	public String interestValue(List<CheckBox> checkbox) {
 		StringBuffer buff = new StringBuffer();
 		String interest = null;
+		int index = 0;
 		for(int i=0;i<checkbox.size();i++) {
 			if(checkbox.get(i).isSelected()) {
-				String item = checkbox.get(i).getText();
-				if(i!=checkbox.size()-1) {
-					buff.append(item);
-					buff.append("&");
-				}else {
-					buff.append(item);
-				}
+				index = i;
 			}
 		}
+		for(int i=0;i<=index;i++) {
+			String item = checkbox.get(i).getText();
+			if(i<index) {
+				buff.append(item);
+				buff.append("&");
+			}else {
+				buff.append(item);
+			}
+		}
+//		String item = checkbox.get(i).getText();
+//		System.out.println(item+"\t");
+//		if(i<checkbox.size()-2) {
+//			buff.append(item);
+//			buff.append("&");
+//		}else {
+//			buff.append(item);
+//		}
 		interest = buff.toString();
+		
 		return interest;
 	}
 	
