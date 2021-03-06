@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+
 <AnchorPane prefHeight="300.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxEx01.Controller01">
    <children>
       <Label layoutX="53.0" layoutY="73.0" prefHeight="25.0" prefWidth="79.0" text="ID" />
@@ -14,6 +15,6 @@
       <Button fx:id="loginBtn" layoutX="81.0" layoutY="198.0" mnemonicParsing="false" onAction="#loginConfirm" text="로그인" />
       <Button fx:id="loginCancelBtn" layoutX="185.0" layoutY="198.0" mnemonicParsing="false" onAction="#loginCancel" text="취소" />
       <Button fx:id="registerBtn" layoutX="281.0" layoutY="198.0" mnemonicParsing="false" onAction="#memberRegister" text="회원가입" />
-      <PasswordField fx:id="inputPw" layoutX="138.0" layoutY="125.0" prefHeight="22.0" prefWidth="221.0" />
+      <PasswordField fx:id="inputPw" layoutX="139.0" layoutY="125.0" prefHeight="22.0" prefWidth="221.0" />
    </children>
 </AnchorPane>
